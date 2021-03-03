@@ -5,7 +5,7 @@ import {
 
 import LinearGradient from 'react-native-linear-gradient'
 
-export interface Props {
+interface Props {
     children: React.ReactNode
 }
 
@@ -31,5 +31,9 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
 })
+
+GradientView.defaultProps = {
+    children: null
+}
 
 export default GradientView
