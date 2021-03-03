@@ -8,9 +8,12 @@ import {
 import GradientView from '../../components/GradientView'
 import normalize from 'react-native-normalize'
 
-
-
 export default class LoadingScreen extends Component {
+
+    componentDidMount() {
+        this.props.navigation.replace('Main')
+    }
+
     render() {
         return (
             <GradientView>
