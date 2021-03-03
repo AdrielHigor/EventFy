@@ -5,7 +5,7 @@ import {
 } from 'react-native'
 import normalize from 'react-native-normalize'
 
-export default class CatalogoScreen extends Component {
+export default class LoginScreen extends Component {
     render() {
         return (
             <View>
@@ -15,5 +15,4 @@ export default class CatalogoScreen extends Component {
 }
 
 const styles = StyleSheet.create({
-
 })

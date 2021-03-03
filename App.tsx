@@ -7,6 +7,12 @@ import LoadingScreen from './src/pages/Loading/index'
 import CatalogoScreen from './src/pages/Catalogo/index'
 import Header from './src/components/Header/index'
 import Drawer from './src/components/Drawer'
+import BuscaScreen from './src/pages/Busca';
+import DetalhesScreen from './src/pages/Detalhes';
+import FinalizarCompraScreen from './src/pages/FinalizarCompra';
+import CompraFinalizadaScreen from './src/pages/CompraFinalizada';
+import LoginScreen from './src/pages/Login';
+import RegisterScreen from './src/pages/Register';
 
 const MainStack = createStackNavigator();
 const AuthStack = createStackNavigator();
@@ -18,6 +24,12 @@ const AuthStackScreen = () => {
       <AuthStack.Screen name="Loading" component={LoadingScreen} options={{
         headerShown: false
       }} />
+      <AuthStack.Screen name="Login" component={LoginScreen} options={{
+        headerShown: false
+      }} />
+      <AuthStack.Screen name="Register" component={RegisterScreen} options={{
+        headerShown: false
+      }} />
     </AuthStack.Navigator>
   )
 }
@@ -25,7 +37,23 @@ const AuthStackScreen = () => {
 const MainDrawerScreen = () => {
   return (
     <MainDrawer.Navigator drawerPosition={'right'} drawerContent={(props) => <Drawer {...props} />}>
-      <MainDrawer.Screen name="Profile" component={CatalogoScreen} options={{
+      <MainDrawer.Screen name="Catalogo" component={CatalogoScreen} options={{
+        headerShown: true,
+        header: Header
+      }} />
+      <MainDrawer.Screen name="Busca" component={BuscaScreen} options={{
+        headerShown: true,
+        header: Header
+      }} />
+      <MainDrawer.Screen name="Detalhes" component={DetalhesScreen} options={{
+        headerShown: true,
+        header: Header
+      }} />
+      <MainDrawer.Screen name="FinalizarCompra" component={FinalizarCompraScreen} options={{
+        headerShown: true,
+        header: Header
+      }} />
+      <MainDrawer.Screen name="CompraFinalizada" component={CompraFinalizadaScreen} options={{
         headerShown: true,
         header: Header
       }} />

@@ -3,6 +3,7 @@ import {
     TouchableOpacity,
     Text,
     StyleSheet,
+    View,
 } from 'react-native'
 import normalize from 'react-native-normalize'
 import { Icon } from 'react-native-elements'
@@ -13,7 +14,8 @@ export interface Props {
     buttonStyle: any,
     icon: string,
     iconType: string,
-    notificationCircle: boolean
+    notificationCircle: boolean,
+    onPress: any,
 }
 
 const DrawerItem = (props: Props) => {
@@ -21,7 +23,7 @@ const DrawerItem = (props: Props) => {
         <TouchableOpacity
             style={styles.dataContainer}
             onPress={() => {
-                // handleLogOut();
+                props.onPress
             }}>
             {
                 props.icon ?
@@ -40,7 +42,7 @@ const DrawerItem = (props: Props) => {
             {
                 props.notificationCircle ?
                     <NotificationCircle /> :
-                    null
+                    <View style={{ width: normalize(20, 'width') }} />
             }
         </TouchableOpacity>
     )
@@ -71,7 +73,8 @@ DrawerItem.defaultProps = {
     buttonStyle: null,
     icon: null,
     notificationCircle: false,
-    iconType: 'font-awesome'
+    iconType: 'font-awesome',
+    onPress: null
 }
 
 export default DrawerItem;

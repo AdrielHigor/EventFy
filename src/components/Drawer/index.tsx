@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     View,
     StyleSheet
@@ -9,19 +9,28 @@ import ProfilePicture from '../ProfilePicture';
 import DrawerItem from '../DrawerItem';
 
 export default function Drawer() {
+    const [logged, setLogged] = useState(false)
 
     return (
         <View style={styles.root}>
             <ProfileView style={styles.customProfileView}>
                 <ProfilePicture rounded={true} style={styles.customProfilePicture} nickname={'nickname'} picture_thumb={'picture_thumb'} size={normalize(150)} />
             </ProfileView>
-            <View>
-                <DrawerItem buttonText={"Minhas Entradas"} icon={"ticket"} notificationCircle />
-                <DrawerItem buttonText={"Carrinho"} icon={"shopping-cart"} notificationCircle />
-            </View>
-            <View style={styles.bottomButtons}>
-                <DrawerItem buttonText={"Desconectar"} buttonStyle={{ color: "red" }} />
-            </View>
+            {logged ?
+                <View style={styles.root}>
+                    <View>
+                        <DrawerItem buttonText={"Minhas Entradas"} icon={"ticket"} notificationCircle />
+                        <DrawerItem buttonText={"Carrinho"} icon={"shopping-cart"} notificationCircle />
+                    </View>
+                    <View style={styles.bottomButtons}>
+                        <DrawerItem buttonText={"Desconectar"} buttonStyle={{ color: "red" }} />
+                    </View>
+                </View>
+                :
+                <View>
+                    <DrawerItem buttonText={"Fazer Login"} icon={"login"} iconType={'antdesign'} />
+                </View>
+            }
         </View >
     )
 }
