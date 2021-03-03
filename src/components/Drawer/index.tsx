@@ -8,8 +8,16 @@ import ProfileView from '../ProfileView';
 import ProfilePicture from '../ProfilePicture';
 import DrawerItem from '../DrawerItem';
 
-export default function Drawer() {
+interface Props {
+    navigation: any
+}
+
+export default function Drawer(props: Props) {
     const [logged, setLogged] = useState(false)
+
+    const handleRedirectLogin = (e: MouseEvent) => {
+        props.navigation.push("Auth", { screen: 'Login' })
+    }
 
     return (
         <View style={styles.root}>
@@ -28,7 +36,7 @@ export default function Drawer() {
                 </View>
                 :
                 <View>
-                    <DrawerItem buttonText={"Fazer Login"} icon={"login"} iconType={'antdesign'} />
+                    <DrawerItem buttonText={"Fazer Login"} icon={"login"} iconType={'antdesign'} onPress={handleRedirectLogin} />
                 </View>
             }
         </View >

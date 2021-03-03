@@ -22,8 +22,8 @@ const DrawerItem = (props: Props) => {
     return (
         <TouchableOpacity
             style={styles.dataContainer}
-            onPress={() => {
-                props.onPress
+            onPress={(e) => {
+                props.onPress(e)
             }}>
             {
                 props.icon ?

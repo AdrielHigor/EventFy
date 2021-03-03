@@ -25,10 +25,12 @@ const AuthStackScreen = () => {
         headerShown: false
       }} />
       <AuthStack.Screen name="Login" component={LoginScreen} options={{
-        headerShown: false
+        headerShown: true,
+        header: Header
       }} />
       <AuthStack.Screen name="Register" component={RegisterScreen} options={{
-        headerShown: false
+        headerShown: true,
+        header: Header
       }} />
     </AuthStack.Navigator>
   )
