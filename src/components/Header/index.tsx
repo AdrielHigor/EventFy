@@ -3,7 +3,7 @@ import { View, StyleSheet, Text } from 'react-native'
 import { Icon } from 'react-native-elements'
 import normalize from 'react-native-normalize'
 
-export interface Props {
+interface Props {
     scene: any
 }
 

@@ -4,7 +4,7 @@ import {
 } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 
-export interface Props {
+interface Props {
     children: React.ReactNode,
     style: any
 }
@@ -27,5 +27,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffb86c',
     }
 })
+
+ProfileView.defaultProps = {
+    children: null,
+    style: null
+}
 
 export default ProfileView;

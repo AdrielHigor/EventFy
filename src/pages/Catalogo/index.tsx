@@ -5,8 +5,6 @@ import {
 } from 'react-native'
 import normalize from 'react-native-normalize'
 
-
-
 export default class CatalogoScreen extends Component {
     render() {
         return (
