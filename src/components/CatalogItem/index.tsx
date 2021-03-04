@@ -14,7 +14,7 @@ interface Props {
     listingTitle: string,
     navigation: any,
     title: string,
-    datetime: string,
+    datetime: Date,
     value: number,
     id: string,
 }
@@ -32,7 +32,7 @@ const CatalogItem = (props: Props) => {
                 </View>
                 <View style={styles.infoContainer}>
                     <Text style={styles.title}>{props.title}</Text>
-                    <Text style={styles.title}>Data e Hora: {props.datetime}</Text>
+                    <Text style={styles.title}>Data e Hora: {props.datetime.getDate()}/{("0" + (props.datetime.getMonth() + 1)).slice(-2)}/{props.datetime.getFullYear()} às {props.datetime.getHours()}:{props.datetime.getMinutes()}</Text>
                     <Text style={styles.title}>Entrada: R$ {props.value.toFixed(2)}</Text>
                 </View>
                 <View style={styles.actionsContainer}>

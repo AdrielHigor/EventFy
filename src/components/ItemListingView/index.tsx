@@ -17,7 +17,7 @@ const ItemListingView = (props: Props) => {
 
     const renderCatalogItem = (e: any) => {
         return (
-            <CatalogItem title={e.title} datetime={e.start_at} value={e.entrance_value} id={e.eventid} navigation={props.navigation} />
+            <CatalogItem key={e.eventid} title={e.title} datetime={new Date(e.start_at)} value={e.entrance_value} id={e.eventid} navigation={props.navigation} />
         )
     }
 
@@ -37,9 +37,8 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#C6C6C6',
         width: '100%',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: normalize(10, 'width')
+        // alignItems: 'center',
+        padding: normalize(10, 'width'),
     },
     titleContainer: {
         justifyContent: 'flex-start',
