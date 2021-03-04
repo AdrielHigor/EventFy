@@ -11,12 +11,13 @@ import PaperContainer from '../PaperContainer'
 import { Icon } from 'react-native-elements'
 
 export interface Props {
-    listingTitle: string
+    listingTitle: string,
+    navigation: any
 }
 
 const CatalogItem = (props: Props) => {
     return (
-        <TouchableOpacity>
+        <TouchableOpacity onPress={(e: Event) => { props.navigation.push('Main', { screen: "Detalhes" }) }}>
             <PaperContainer style={styles.container}>
                 <View style={styles.imageContainer}>
                     <Image
@@ -48,7 +49,7 @@ const CatalogItem = (props: Props) => {
                     />
                 </View>
             </PaperContainer >
-        </TouchableOpacity>
+        </TouchableOpacity >
     )
 }
 
@@ -97,7 +98,8 @@ const styles = StyleSheet.create({
 })
 
 CatalogItem.defaultProps = {
-    listingTitle: ''
+    listingTitle: '',
+    navigation: null
 }
 
 export default CatalogItem;

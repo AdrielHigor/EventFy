@@ -3,12 +3,14 @@ import {
     View,
     StyleSheet
 } from 'react-native'
-import normalize from 'react-native-normalize'
+import ItemListingView from '../../components/ItemListingView'
+
 
 export default class BuscaScreen extends Component {
     render() {
         return (
             <View>
+                <ItemListingView listingTitle={"Resultados da Pesquisa"} />
             </View>
         )
     }

@@ -8,7 +8,8 @@ import normalize from 'react-native-normalize'
 import CatalogItem from '../CatalogItem'
 
 export interface Props {
-    listingTitle: string
+    listingTitle: string,
+    navigation: any
 }
 
 const ItemListingView = (props: Props) => {
@@ -17,7 +18,7 @@ const ItemListingView = (props: Props) => {
             <View style={styles.titleContainer}>
                 <Text style={styles.title}>{props.listingTitle}</Text>
             </View>
-            <CatalogItem />
+            <CatalogItem navigation={props.navigation} />
         </View>
     )
 }
@@ -45,7 +46,8 @@ const styles = StyleSheet.create({
 })
 
 ItemListingView.defaultProps = {
-    listingTitle: ''
+    listingTitle: '',
+    navigation: null
 }
 
 export default ItemListingView;

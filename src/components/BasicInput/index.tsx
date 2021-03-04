@@ -1,11 +1,8 @@
 import React from 'react'
-import {
-    StyleSheet,
-} from 'react-native'
 import { Input } from 'react-native-elements'
 import normalize from 'react-native-normalize'
 
-export interface Props {
+interface Props {
     placeholder: string,
     handleChange: any,
     value: string,
@@ -17,20 +14,18 @@ const BasicInput = (props: Props) => {
         <Input
             value={props.value}
             placeholder={props.placeholder}
-            inputContainerStyle={{ borderBottomColor: '#6B6B6B', height: normalize(30) }}
+            inputStyle={{ marginBottom: 0 }}
+            inputContainerStyle={{ height: normalize(30), paddingBottom: -50 }}
             placeholderTextColor="#6B6B6B"
             textAlign="center"
             secureTextEntry={props.password}
             onChangeText={(event) => {
                 props.handleChange(event)
             }}
+        // style={{ marginBottom: 0 }}
         />
     )
 }
-
-const styles = StyleSheet.create({
-
-})
 
 BasicInput.defaultProps = {
     placeholder: 'text',

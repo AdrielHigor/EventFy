@@ -20,7 +20,7 @@ export default class CatalogoScreen extends Component {
                     <BasicButton buttonName={"Ofertas"} color={"#0047FF"} />
                     <BasicButton buttonName={"Novidades"} color={"#0047FF"} />
                 </View>
-                <ItemListingView listingTitle={'Eventos em Destaque'}/>
+                <ItemListingView listingTitle={'Eventos em Destaque'} navigation={this.props.navigation} />
             </View>
         )
     }
