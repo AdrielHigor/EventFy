@@ -33,7 +33,7 @@ const Header = (props: Props) => {
                                 name='menu'
                                 color='#fff'
                                 size={normalize(25)}
-                                onPress={props.scene.descriptor.navigation.toggleDrawer}
+                                onPress={props.scene.descriptor.navigation.push('Main', {screen: 'Busca'})}
                             />
                         </View>
                     </View>

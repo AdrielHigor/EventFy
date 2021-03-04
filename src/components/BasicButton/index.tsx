@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
     container: {
         borderRadius: 2,
         minWidth: normalize(100),
-        minHeight: normalize(50),
         alignItems: 'center',
         justifyContent: 'center',
         elevation: 1,
