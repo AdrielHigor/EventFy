@@ -12,7 +12,11 @@ import { Icon } from 'react-native-elements'
 
 interface Props {
     listingTitle: string,
-    navigation: any
+    navigation: any,
+    title: string,
+    datetime: string,
+    value: number,
+    id: string,
 }
 
 const CatalogItem = (props: Props) => {
@@ -27,9 +31,9 @@ const CatalogItem = (props: Props) => {
                     />
                 </View>
                 <View style={styles.infoContainer}>
-                    <Text style={styles.title}>Cybersecurity Business Development Mission to South America</Text>
-                    <Text style={styles.title}>Data e Hora: 24/03/21 às 16:30</Text>
-                    <Text style={styles.title}>Entrada: R$ 16.00</Text>
+                    <Text style={styles.title}>{props.title}</Text>
+                    <Text style={styles.title}>Data e Hora: {props.datetime}</Text>
+                    <Text style={styles.title}>Entrada: R$ {props.value.toFixed(2)}</Text>
                 </View>
                 <View style={styles.actionsContainer}>
                     <Icon

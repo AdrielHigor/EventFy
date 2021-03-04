@@ -9,16 +9,24 @@ import CatalogItem from '../CatalogItem'
 
 export interface Props {
     listingTitle: string,
-    navigation: any
+    navigation: any,
+    data: any
 }
 
 const ItemListingView = (props: Props) => {
+
+    const renderCatalogItem = (e: any) => {
+        return (
+            <CatalogItem title={e.title} datetime={e.start_at} value={e.entrance_value} id={e.eventid} navigation={props.navigation} />
+        )
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.titleContainer}>
                 <Text style={styles.title}>{props.listingTitle}</Text>
             </View>
-            <CatalogItem navigation={props.navigation} />
+            {props.data.map((e: any) => { return renderCatalogItem(e) })}
         </View>
     )
 }
@@ -47,7 +55,8 @@ const styles = StyleSheet.create({
 
 ItemListingView.defaultProps = {
     listingTitle: '',
-    navigation: null
+    navigation: null,
+    data: []
 }
 
 export default ItemListingView;

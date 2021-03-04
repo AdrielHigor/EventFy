@@ -4,11 +4,37 @@ import {
     StyleSheet,
 } from 'react-native'
 import normalize from 'react-native-normalize'
+import get_events from '../../api/requests/events/get_event'
 import BasicButton from '../../components/BasicButton'
 import HotSwiper from '../../components/HotSwiper'
 import ItemListingView from '../../components/ItemListingView'
 
-export default class CatalogoScreen extends Component {
+type Props = {
+    navigation: any,
+}
+
+type State = {
+    eventsData: any
+}
+
+export default class CatalogoScreen extends Component<Props, State> {
+    constructor(props: Props) {
+        super(props);
+        this.state = {
+            eventsData: []
+        };
+    }
+
+    async handleGetEvents() {
+        let events = await get_events();
+        console.log(events.data)
+        this.setState({ eventsData: events.data })
+    }
+
+    async componentDidMount() {
+        await this.handleGetEvents()
+    }
+
     render() {
         return (
             <View style={styles.root}>
@@ -20,7 +46,7 @@ export default class CatalogoScreen extends Component {
                     <BasicButton buttonName={"Ofertas"} color={"#0047FF"} />
                     <BasicButton buttonName={"Novidades"} color={"#0047FF"} />
                 </View>
-                <ItemListingView listingTitle={'Eventos em Destaque'} navigation={this.props.navigation} />
+                <ItemListingView listingTitle={'Eventos em Destaque'} navigation={this.props.navigation} data={this.state.eventsData} />
             </View>
         )
     }
