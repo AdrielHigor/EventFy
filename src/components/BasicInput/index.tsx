@@ -19,7 +19,7 @@ const BasicInput = (props: Props) => {
             placeholderTextColor="#6B6B6B"
             textAlign="center"
             secureTextEntry={props.password}
-            onChangeText={(event) => {
+            onChangeText={(event: Event) => {
                 props.handleChange(event)
             }}
         // style={{ marginBottom: 0 }}

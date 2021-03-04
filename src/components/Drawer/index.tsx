@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     View,
     StyleSheet
@@ -8,12 +8,32 @@ import ProfileView from '../ProfileView';
 import ProfilePicture from '../ProfilePicture';
 import DrawerItem from '../DrawerItem';
 
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
 interface Props {
     navigation: any
 }
 
 export default function Drawer(props: Props) {
     const [logged, setLogged] = useState(false)
+    const [fullName, setFullName] = useState('nickname')
+
+    const checkIfLogged = async () => {
+        let user = await AsyncStorage.getItem('@userToken')
+        let full_name = await AsyncStorage.getItem('@userName')
+        setFullName(full_name ? full_name : 'nickname')
+        setLogged(user ? true : false)
+    }
+
+    const logout = async () => {
+        await AsyncStorage.removeItem('@userToken')
+        await AsyncStorage.removeItem('@userName')
+        props.navigation.replace("Main", { screen: 'Catalogo' })
+    }
+
+    useEffect(() => {
+        checkIfLogged()
+    })
 
     const handleRedirectLogin = (e: Event) => {
         props.navigation.push("Auth", { screen: 'Login' })
@@ -22,7 +42,7 @@ export default function Drawer(props: Props) {
     return (
         <View style={styles.root}>
             <ProfileView style={styles.customProfileView}>
-                <ProfilePicture rounded={true} style={styles.customProfilePicture} nickname={'nickname'} picture_thumb={'picture_thumb'} size={normalize(150)} />
+                <ProfilePicture rounded={true} style={styles.customProfilePicture} nickname={fullName} picture_thumb={'picture_thumb'} size={normalize(150)} />
             </ProfileView>
             {logged ?
                 <View style={styles.root}>
@@ -31,7 +51,7 @@ export default function Drawer(props: Props) {
                         <DrawerItem buttonText={"Carrinho"} icon={"shopping-cart"} notificationCircle />
                     </View>
                     <View style={styles.bottomButtons}>
-                        <DrawerItem buttonText={"Desconectar"} buttonStyle={{ color: "red" }} />
+                        <DrawerItem buttonText={"Desconectar"} buttonStyle={{ color: "red" }} onPress={() => { logout() }} />
                     </View>
                 </View>
                 :
