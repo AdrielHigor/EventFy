@@ -10,7 +10,7 @@ import normalize from 'react-native-normalize'
 import PaperContainer from '../PaperContainer'
 import { Icon } from 'react-native-elements'
 
-export interface Props {
+interface Props {
     listingTitle: string,
     navigation: any
 }
