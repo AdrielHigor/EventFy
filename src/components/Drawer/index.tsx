@@ -15,7 +15,7 @@ interface Props {
 export default function Drawer(props: Props) {
     const [logged, setLogged] = useState(false)
 
-    const handleRedirectLogin = (e: MouseEvent) => {
+    const handleRedirectLogin = (e: Event) => {
         props.navigation.push("Auth", { screen: 'Login' })
     }
 
@@ -36,7 +36,7 @@ export default function Drawer(props: Props) {
                 </View>
                 :
                 <View>
-                    <DrawerItem buttonText={"Fazer Login"} icon={"login"} iconType={'antdesign'} onPress={handleRedirectLogin} />
+                    <DrawerItem buttonText={"Fazer Login"} icon={"login"} iconType={'antdesign'} onPress={(e: Event) => { handleRedirectLogin(e) }} />
                 </View>
             }
         </View >

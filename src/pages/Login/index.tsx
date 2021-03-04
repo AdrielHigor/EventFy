@@ -11,7 +11,12 @@ import BasicButton from '../../components/BasicButton'
 import BasicInput from '../../components/BasicInput'
 import PaperContainer from '../../components/PaperContainer'
 
+
 export default class LoginScreen extends Component {
+
+    handleRedirectRegister() {
+        this.props.navigation.push('Auth', { screen: "Register" })
+    }
 
     componentDidMount() {
     }
@@ -34,7 +39,7 @@ export default class LoginScreen extends Component {
                     </View>
                     <BasicButton buttonName={'Entrar'} style={styles.loginButton} />
                     <Text>Esqueceu a senha?</Text>
-                    <TouchableOpacity style={styles.registerButton}>
+                    <TouchableOpacity style={styles.registerButton} onPress={() => { this.handleRedirectRegister() }}>
                         <Text style={styles.registerText}>Registrar-se</Text>
                     </TouchableOpacity>
                 </PaperContainer>

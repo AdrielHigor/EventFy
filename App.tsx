@@ -30,7 +30,8 @@ const AuthStackScreen = () => {
       }} />
       <AuthStack.Screen name="Register" component={RegisterScreen} options={{
         headerShown: true,
-        header: Header
+        header: Header,
+
       }} />
     </AuthStack.Navigator>
   )

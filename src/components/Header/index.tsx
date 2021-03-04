@@ -8,20 +8,36 @@ interface Props {
 }
 
 const Header = (props: Props) => {
+
     return (
         <View style={styles.headerView}>
             <View style={styles.logo}>
                 <Text style={styles.logoText}>EventFy</Text>
             </View>
-            <View style={styles.menuButton}>
-                <Icon
-                    underlayColor='#EAAB73'
-                    name='menu'
-                    color='#fff'
-                    size={normalize(25)}
-                    onPress={props.scene.descriptor.navigation.toggleDrawer}
-                />
-            </View>
+            {
+                props.scene.route.name == "Login" || props.scene.route.name == "Register" ?
+                    null :
+                    <View style={{ flexDirection: 'row' }}>
+                        <View style={styles.menuButton}>
+                            <Icon
+                                underlayColor='#EAAB73'
+                                name='search'
+                                color='#fff'
+                                size={normalize(25)}
+                                onPress={props.scene.descriptor.navigation.toggleDrawer}
+                            />
+                        </View>
+                        <View style={styles.menuButton}>
+                            <Icon
+                                underlayColor='#EAAB73'
+                                name='menu'
+                                color='#fff'
+                                size={normalize(25)}
+                                onPress={props.scene.descriptor.navigation.toggleDrawer}
+                            />
+                        </View>
+                    </View>
+            }
         </View>
     )
 }
@@ -45,7 +61,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     menuButton: {
-        marginRight: normalize(15)
+        marginRight: normalize(15),
     }
 })
 
